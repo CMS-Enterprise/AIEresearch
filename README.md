@@ -1,3 +1,3 @@
 # CMS Private Repo for AIE Research
 
-This is a private repo used for development by AIE R&D. The public repo, [CMS-Enterprise/ai_explorers](https://github.com/CMS-Enterprise/ai_explorers/tree/main "GitHub"), will be pushed to once work here is complete. Pushing to the public repo will require several changes, such as removing authetication codes. For models that require validation, the public repo will be more of a guide for how to get things done.
+This is a [private repo](https://github.com/cms-enterprise/AIEresearch) used for development by AIE R&D. The public repo, [CMS-Enterprise/ai_explorers](https://github.com/CMS-Enterprise/ai_explorers/tree/main "GitHub"), will be pushed to once work here is complete. Pushing to the public repo will require several changes, such as removing authetication codes. For models that require validation, the public repo will be more of a guide for how to get things done.

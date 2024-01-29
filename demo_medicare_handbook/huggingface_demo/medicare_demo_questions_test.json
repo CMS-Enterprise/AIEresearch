@@ -1,0 +1,22 @@
+[
+    {
+        "Session":1,
+        "SubSession":null,
+        "Question":"What is the initial enrollment period for Medicare Part A and Part B?",
+        "Question_realistic":"When can I first sign up for Medicare Parts A and B?",
+        "Difficulty":"Medium",
+        "PageNum":17,
+        "Answer":"Generally, you can first sign up for Part A and\/or Part B during the 7-month period that begins 3 months before the month you turn 65 and ends 3 months after the month you turn 65. If your birthday is on the first of the month, your 7-month period starts 4 months before the month you turn 65 and ends 2 months after the month you turn 65.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":2,
+        "SubSession":null,
+        "Question":"Does Medicare Part A cover home health care services?",
+        "Question_realistic":"Will Medicare Part A pay for my home health care?",
+        "Difficulty":"Low",
+        "PageNum":25,
+        "Answer":"Part A (Hospital Insurance) helps cover: Inpatient care in a hospital, Skilled nursing facility care, Hospice care, Home health care",
+        "TrickQuestion":0.0
+    }
+]
