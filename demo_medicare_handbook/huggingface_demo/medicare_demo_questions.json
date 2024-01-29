@@ -1,0 +1,302 @@
+[
+    {
+        "Session":1,
+        "SubSession":null,
+        "Question":"What is the initial enrollment period for Medicare Part A and Part B?",
+        "Question_realistic":"When can I first sign up for Medicare Parts A and B?",
+        "Difficulty":"Medium",
+        "PageNum":17,
+        "Answer":"Generally, you can first sign up for Part A and\/or Part B during the 7-month period that begins 3 months before the month you turn 65 and ends 3 months after the month you turn 65. If your birthday is on the first of the month, your 7-month period starts 4 months before the month you turn 65 and ends 2 months after the month you turn 65.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":2,
+        "SubSession":null,
+        "Question":"Does Medicare Part A cover home health care services?",
+        "Question_realistic":"Will Medicare Part A pay for my home health care?",
+        "Difficulty":"Low",
+        "PageNum":25,
+        "Answer":"Part A (Hospital Insurance) helps cover: Inpatient care in a hospital, Skilled nursing facility care, Hospice care, Home health care",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":3,
+        "SubSession":null,
+        "Question":"Is there a yearly limit on what you pay out of pocket in Original Medicare?",
+        "Question_realistic":"Is there a cap on what I have to pay each year with Original Medicare?",
+        "Difficulty":"Medium",
+        "PageNum":58,
+        "Answer":"You generally pay a set amount for your health care (deductible) before Medicare begins to pay its share. Once Medicare pays its share, you pay a coinsurance or copayment for covered services and supplies. There\u2019s no yearly limit for what you pay out of pocket unless you have other insurance (like Medigap, Medicaid, or employer, retiree, or union coverage).",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":4,
+        "SubSession":"A",
+        "Question":"Can you enroll in a Medicare Advantage Plan if you have End-Stage Renal Disease (ESRD)?",
+        "Question_realistic":"If I have End-Stage Renal Disease, can I still get a Medicare Advantage Plan?",
+        "Difficulty":"Medium",
+        "PageNum":64,
+        "Answer":"If you have ESRD, you can choose either Original Medicare or a Medicare Advantage Plan when deciding how to get Medicare coverage.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":4,
+        "SubSession":"B",
+        "Question":"If only eligible for Medicare because of ESRD, when will my benefits expire after a kidney transplant?",
+        "Question_realistic":"How long will my Medicare last after my kidney transplant, since I got it for my kidney disease?",
+        "Difficulty":"High",
+        "PageNum":64,
+        "Answer":"If you\u2019re only eligible for Medicare because you have ESRD and you get a kidney transplant, your Medicare benefits will end 36 months after the transplant.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":5,
+        "SubSession":null,
+        "Question":"What is Medicare Part D and am I required to sign up for it?",
+        "Question_realistic":"What exactly is Medicare Part D, and do I have to enroll in it?",
+        "Difficulty":"Medium",
+        "PageNum":79,
+        "Answer":"Medicare drug coverage (Part D) helps pay for prescription drugs you need. It\u2019s optional and offered to everyone with Medicare. Even if you don\u2019t take prescription drugs now, consider getting Medicare drug coverage. If you decide not to get it when you\u2019re first eligible, and you don\u2019t have other creditable prescription drug coverage (like drug coverage from an employer or union) or get Extra Help, you\u2019ll likely pay a late enrollment penalty if you join a plan later.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":6,
+        "SubSession":null,
+        "Question":"What kinds of Medicare Advantage Plans are available?",
+        "Question_realistic":"What different types of Medicare Advantage Plans can I choose from?",
+        "Difficulty":"Medium",
+        "PageNum":61,
+        "Answer":"Health Maintenance Organization (HMO) Plan, HMO Point-of-Service (HMOPOS) Plan, Medical Savings Account (MSA) Plans, Preferred Provider Organization (PPO) Plan, Private Fee-for-Service (PFFS) Plan, Special Needs Plan (SNP)",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":7,
+        "SubSession":"A",
+        "Question":"Do Medicare Advantage Plans cover services outside the United States?",
+        "Question_realistic":"If I travel abroad, will my Medicare Advantage Plan cover my medical care?",
+        "Difficulty":"Medium",
+        "PageNum":12,
+        "Answer":"Generally, Medicare Advantage Plans do not cover medical care outside the U.S., but some plans may offer a supplemental benefit that covers emergency and urgently needed services when traveling outside the U.S.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":7,
+        "SubSession":"B",
+        "Question":"Since Original Medicare does cover medical outside the U.S., why would I want Medigap?",
+        "Question_realistic":"Why should I consider getting Medigap if Original Medicare already covers me outside the U.S.?",
+        "Difficulty":"High",
+        "PageNum":12,
+        "Answer":"Original Medicare actually doesn't cover medical care outside the U.S. You may be able to buy a Medicare Supplement Insurance (Medigap) policy that covers emergency care outside the U.S.",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":8,
+        "SubSession":null,
+        "Question":"If I have a Medicare Advantage Plan, can I also sign up for Medigap?",
+        "Question_realistic":"Can I get Medigap insurance if I'm already on a Medicare Advantage Plan?",
+        "Difficulty":"Medium",
+        "PageNum":78,
+        "Answer":"If you\u2019re in a Medicare Advantage Plan, it\u2019s illegal for anyone to sell you a Medigap policy unless you\u2019re switching back to Original Medicare. If you aren\u2019t planning to drop your Medicare Advantage Plan, and someone tries to sell you a Medigap policy, report it to your State Insurance Department.",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":9,
+        "SubSession":null,
+        "Question":"How is Medicare able to cover 100% of the costs for all preventive services?",
+        "Question_realistic":"How does Medicare manage to pay for all of my preventive services in full?",
+        "Difficulty":"High",
+        "PageNum":29,
+        "Answer":"Medicare does not cover 100% of the costs for all preventive services. While it covers many preventive services, some services may require a copayment or coinsurance.",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":10,
+        "SubSession":"A",
+        "Question":"If I was without creditable prescription drug coverage for 14 months, what would be my penalty?",
+        "Question_realistic":"What's the penalty for not having prescription drug coverage for 14 months?",
+        "Difficulty":"High",
+        "PageNum":"84-85",
+        "Answer":"The penalty is 1% of the \"national base beneficiary premium\", for each month without the coverage, and then added to the premium for that year. Therefore it would be 14% added to the premium?",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":10,
+        "SubSession":"B",
+        "Question":"Based on the 2024 national base beneficiary premium, then what would would be my monthly late enrollment penalty?",
+        "Question_realistic":"Based on this year's base premium, how much will I pay extra each month for enrolling late in Medicare?",
+        "Difficulty":"High",
+        "PageNum":"84-85",
+        "Answer":"You're monthly late enrollment penalty would be .14 (14% penalty) \u00d7 $34.70 (2024 base beneficiary premium) = $4.86, which is then rounded to the nearest $0.10. That total is $4.90. This is then added to the base beneficiary premium, making the total $39.60.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":11,
+        "SubSession":null,
+        "Question":"What is the name and phone number for the South Dakota state health insurance assistance program?",
+        "Question_realistic":"Can you give me the contact info for the health insurance help program in South Dakota?",
+        "Difficulty":"Low",
+        "PageNum":118,
+        "Answer":"The phone number for Senior Health Information & Insurance Education (SHIINE) is 1-800-536-8197",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":12,
+        "SubSession":null,
+        "Question":"What do I do if I have a family member that only knows Armenian?",
+        "Question_realistic":"What should I do if my family member speaks only Armenian and needs Medicare help?",
+        "Difficulty":"Low",
+        "PageNum":125,
+        "Answer":"Medicare offers interpreters, at no cost, in many languages including Armenian. In order to recieve help in Armenian contact the following number: 1-800-MEDICARE (1-800-633-4227)",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":13,
+        "SubSession":null,
+        "Question":"What reasons are acceptable for qualifying for a Medicare special enrollment period?",
+        "Question_realistic":"What are the valid reasons for getting a special chance to enroll in Medicare?",
+        "Difficulty":"Low",
+        "PageNum":18,
+        "Answer":"There are other circumstances where you may be able to sign up for Medicare during a Special Enrollment Period. You may be eligible if you miss an enrollment period because of certain exceptional circumstances, like being impacted by a natural disaster or an emergency, incarceration, employer or health plan error, losing Medicaid coverage, or other circumstances outside of your control that Medicare determines to be exceptional. For more information, visit Medicare.gov or call 1-800-MEDICARE (1-800-633-4227). TTY users can call 1-877-486-2048.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":14,
+        "SubSession":null,
+        "Question":"I am older than 65 years and have both Medicare and an existing group health plan coverage through my employer, which insurance will be the primary payer?",
+        "Question_realistic":"I'm over 65 with Medicare and insurance from work. Which one pays first?",
+        "Difficulty":"High",
+        "PageNum":21,
+        "Answer":"When you have other insurance (like group health plan, retiree health, or Medicaid coverage) and Medicare, there are rules for whether Medicare or your other coverage pays first. If you\u2019re 65 or older, have group health plan coverage based on your or your spouse\u2019s current employment, and the employer has 20 or more employees\u2026Your group health plan pays first.\n\nIf you\u2019re 65 or older, have group health plan coverage based on your or your spouse\u2019s current employment, and the employer has fewer than 20 employees\u2026Medicare pays first.",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":15,
+        "SubSession":null,
+        "Question":"What are some specific examples of preventative services covered by Medicare Part B?",
+        "Question_realistic":"Can you give me examples of preventive services that Medicare Part B covers?",
+        "Difficulty":"Medium",
+        "PageNum":"30-55",
+        "Answer":"[Items are marked throughout the page range with an \"apple\" icon and the prefix text \"Preventative service\"]\n\nExamples include\/first 5listed: Abdominal aortic aneurysm screensings, Alcohol misuse screenings & counseling, Bone mass measurements, Cardiovascular behavioral therapy, Cardiovascular disease screenings)",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":16,
+        "SubSession":null,
+        "Question":"I live in an urban \/ non-rural area, am I able to get telehealth services for all of 2024?",
+        "Question_realistic":"Living in the city, can I use telehealth services throughout this year?",
+        "Difficulty":"Hard",
+        "PageNum":51,
+        "Answer":"Through December 31, 2024, you can get telehealth services at any location in the U.S., including your home. After this period, you must be in an office or medical facility located in a rural area for most telehealth services.",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":17,
+        "SubSession":null,
+        "Question":"What is the purpose of an ABN?",
+        "Question_realistic":"What's the reason for getting an Advance Beneficiary Notice?",
+        "Difficulty":"Low",
+        "PageNum":101,
+        "Answer":"If you have Original Medicare, your doctor, other health care provider, or supplier may give you a written notice if they think Medicare won\u2019t pay for the items or services you\u2019ll get. This notice is called an \u201cAdvance Beneficiary Notice of Non-coverage,\u201d or ABN. The ABN lists the items or services that your doctor or health care provider expects Medicare will not pay for, along with an estimate of the costs for the items and services and the reasons why Medicare may not pay.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":18,
+        "SubSession":"A",
+        "Question":"I have original Medicare and coverage for my procedure was denied, what do I have to do to appeal this decision?",
+        "Question_realistic":null,
+        "Difficulty":"Medium",
+        "PageNum":99,
+        "Answer":"(1) Get the \u201cMedicare Summary Notice\u201d (MSN) that shows the item or service you\u2019re appealing. Go to page 59 for more information about MSNs. (2) Circle the item(s) on the MSN you disagree with. Write an explanation of why you disagree with the decision. You can write on the MSN or on a separate piece of paper and attach it to the MSN. (3) Include your name, phone number, and Medicare number on the MSN. Keep a copy for your records. (4) Send the MSN, or a copy, to the company that handles bills for Medicare (Medicare Administrative Contractor) listed on the MSN. You can include any information you have about your appeal, like information from\nyour health care provider. Or, you can use Form CMS-20027. ",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":18,
+        "SubSession":"B",
+        "Question":"When can I expect a decision for my appeal?",
+        "Question_realistic":null,
+        "Difficulty":"Low",
+        "PageNum":99,
+        "Answer":"You\u2019ll generally get a decision from the Medicare Administrative Contractor within 60 days after they get your request. If Medicare will cover the item(s) or service(s), it will be listed on your next MSN.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":19,
+        "SubSession":null,
+        "Question":"Does a hospital admittance status of inpatient or outpatient make any difference?",
+        "Question_realistic":null,
+        "Difficulty":"Medium",
+        "PageNum":28,
+        "Answer":"Whether you\u2019re an inpatient or an outpatient affects how much you pay for hospital services and if you qualify for Part A skilled nursing facility care.\n\nYou\u2019re an inpatient when the hospital formally admits you with a doctor\u2019s order.\n\nYou\u2019re an outpatient if you\u2019re getting emergency or observation services (which may include an overnight stay in the hospital or services in an outpatient clinic), lab tests, or X-rays, without a formal inpatient admission (even if you spend the night in the hospital).\n\nEach day you have to stay, you or your caregiver should always ask the hospital and\/or your doctor, or a hospital social worker or patient advocate, if you\u2019re an inpatient or outpatient.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":20,
+        "SubSession":null,
+        "Question":"What types of colorectal cancer screenings are covered by Medicare?",
+        "Question_realistic":null,
+        "Difficulty":"Low",
+        "PageNum":"35-36",
+        "Answer":"Medicare may cover one or more of these screening tests: Barium enema, Screening Colonoscopies, Flexible sigmoidoscopies, Fecal occult blood tests, Multi-target stool DNA & blood-based biomarker tests",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":21,
+        "SubSession":null,
+        "Question":"What is the 5-star special enrollment period for Medicare Advantage Plans?",
+        "Question_realistic":null,
+        "Difficulty":"Low",
+        "PageNum":72,
+        "Answer":"Medicare uses ratings from 1\u20135 stars to help you compare plans based on quality and performance.\nIf a Medicare Advantage Plan, Medicare drug plan, or Medicare Cost Plan with a 5-star quality rating is available in your area, you can use the 5-star Special Enrollment Period to switch from your current Medicare plan to a Medicare plan with a 5-star quality rating.\n\nDecember 8 to November 30 the following year\nNote: You can only switch plans once during this period.",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":22,
+        "SubSession":"A",
+        "Question":"How many Medigap Plans are offered?",
+        "Question_realistic":null,
+        "Difficulty":"High",
+        "PageNum":76,
+        "Answer":"Based on table, 10 are offered including A, B, C, D, F, G, K, L, M, N",
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":22,
+        "SubSession":"B",
+        "Question":"What was the out-of-pocket limit in 2023 for Medigap Plan K?",
+        "Question_realistic":null,
+        "Difficulty":"High",
+        "PageNum":76,
+        "Answer":6940,
+        "TrickQuestion":1.0
+    },
+    {
+        "Session":23,
+        "SubSession":null,
+        "Question":"When is it best to buy a Medigap policy?",
+        "Question_realistic":null,
+        "Difficulty":"Medium",
+        "PageNum":77,
+        "Answer":"The best time to buy a Medigap policy is  during your Medigap Open Enrollment Period. This 6-month period begins the first month you have Medicare Part B (Medical Insurance), and you\u2019re 65 or older. (Some states have additional Open Enrollment Periods.)",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":24,
+        "SubSession":null,
+        "Question":"What are some examples of Medicare Part D drug coverage rules?",
+        "Question_realistic":null,
+        "Difficulty":"Medium",
+        "PageNum":86,
+        "Answer":"Plans may have coverage rules for certain drugs: Prior authorization, Quantity limits, Step therapy, Medication safety checks at the pharmacy, Drug Management Programs",
+        "TrickQuestion":0.0
+    },
+    {
+        "Session":25,
+        "SubSession":null,
+        "Question":"What is the price cap for a one-month supply of Part-D covered insulin?",
+        "Question_realistic":null,
+        "Difficulty":"Low",
+        "PageNum":88,
+        "Answer":35,
+        "TrickQuestion":null
+    }
+]

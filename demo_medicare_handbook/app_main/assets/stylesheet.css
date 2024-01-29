@@ -1,0 +1,26 @@
+body {
+    background: #E8E8E8;
+}
+
+#info_table {
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#info_table td, #info_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+/*#info_table tr:nth-child(even){background-color: #f2f2f2;}*/
+  
+#info_table tr:hover {background-color: #ddd;}
+  
+#info_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #E6F1F8;
+    color: black;
+}
