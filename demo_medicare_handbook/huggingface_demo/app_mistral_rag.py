@@ -158,7 +158,7 @@ if __name__ == "__main__":
                                              app_id='LlamaIndex_App',
                                              feedbacks=[f_groundedness, f_qa_relevance, f_qs_relevance])     
         # Start TruLens dashboard
-        tru.run_dashboard(port='8080') 
+        tru.run_dashboard(port='8666') 
 
     # query function using rag model
     def query_index(message, chat_history):
@@ -201,6 +201,9 @@ if __name__ == "__main__":
             log_dict[log_idx]['response'] = ''.join([o for o in outputs])
             f.write(json.dumps(log_dict))
 
+        # Add note for source info
+        outputs.append('\n\n Source information below. Full source text is available in the log.\n')
+
         # Add to log
         with open(log_file_path, 'a') as f:
             # Aggregate source data into source_lst 
@@ -215,6 +218,17 @@ if __name__ == "__main__":
                 source_dict['content'] = source_node.get_text()
                 # Add to source_lst
                 source_lst.append(source_dict)
+                
+                # Add source data
+                file_name = source_node.metadata['file_name']
+                page_num  = source_node.metadata['page_label']
+                for idx, text in enumerate([file_name, page_num]):
+                    if idx==0:
+                        outputs.append(f"Doc: {text}")
+                    if idx==1:
+                        outputs.append(f"   |   Page {page_num} \n")
+                    yield "".join(outputs)
+
             # Add to logs
             with open(log_file_path, 'w') as f:
                 log_dict[log_idx]['source'] = source_lst

@@ -83,8 +83,8 @@ sidebar = html.Div(
             [
                 dbc.NavLink("Foundational LLM Q&A", href="/qa", active="exact"),
                 dbc.NavLink("Doc Upload & Query Tool", href="/docu", active="exact"),
-                dbc.NavLink("Text-to-Speech", href="/tts", active="exact"),
                 dbc.NavLink("Medicare Handbook Chatbot", href="/chatbot", active="exact"),
+                #dbc.NavLink("Text-to-Speech", href="/tts", active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -98,7 +98,7 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavLink("About", href="/about", active="exact"),
-                dbc.NavLink("Human Centered AI Systems", href="/human-centered-ai", active="exact"),
+                dbc.NavLink("Human-Centered AI Systems", href="/human-centered-ai", active="exact"),
             ],
             vertical=True,
             pills=True,
@@ -137,8 +137,8 @@ def render_page_content(pathname):
     elif pathname == "/docu":
         return display_doc_upload()
     
-    elif pathname == "/tts":
-        return display_tts()
+    #elif pathname == "/tts":
+    #    return display_tts()
 
     elif pathname == "/chatbot":
         return display_chatbot()

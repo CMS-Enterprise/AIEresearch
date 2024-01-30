@@ -23,13 +23,17 @@ model_listing = html.Div(
             ]),
             html.Tr([
                 html.Td("Mistral-7B-Instruct-v0.2"),
-                html.Td("tbd"),
-                html.Td("tbd"),
+                html.Td([
+                    html.A("mistralai/Mistral-7B-Instruct-v0.1", href='https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1', target="_blank")
+                ]),
+                html.Td("Published September 2023."),
             ]),
             html.Tr([
                 html.Td("Llama 2"),
-                html.Td("tbd"),
-                html.Td("tbd"),
+                html.Td([
+                    html.A("meta-llama/Llama-2-7b-chat", href='https://huggingface.co/meta-llama/Llama-2-7b-chat', target="_blank")
+                ]),
+                html.Td("Published July 2023.  Also available with 13 and 70 billion parameters."),
             ])
         ], id="info_table"),
     ]
@@ -45,7 +49,7 @@ datasets_listing = html.Div(
             ]),
             html.Tr([
                 html.Td("Logs"),
-                html.Td("A collection of data points used to evaluate the model''s quality and implementation performance. This includes query(prompt), response, latency, datetime, and occasionally additional meta data. No data is collected about users. This data collection is automated and required to use the application, you cannot opt out."),
+                html.Td("A collection of data points used to evaluate the model's quality and implementation performance. This includes query(prompt), response, latency, datetime, and occasionally additional meta data. No data is collected about users. This data collection is automated and required to use the application, you cannot opt out."),
             ])
         ], id="info_table"),
     ]

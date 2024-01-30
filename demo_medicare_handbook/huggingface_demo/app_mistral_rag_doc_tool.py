@@ -132,58 +132,61 @@ if __name__ == "__main__":
         return lst_docs
 
     # Create engine
-    def create_engine():
+    def create_engine(progress=gr.Progress()):
         # Create query engine
         ## Turn off streaming if TruLens being used
-        streaming = False if args.trulens else True
+        streaming = False #if args.trulens else True
         global engine
         # Load engine based on engine type
         if args.engine_type==0:
             engine = aie_helper.load_mistral7b_query_engine(model, tokenizer, lst_docs, streaming)
-            # engine = aie_helper.load_mistral7b_query_index(model, tokenizer, lst_docs, streaming)
-            # # Create the query engine
-            # engine = index.as_query_engine(streaming=streaming)
-            # print('create engine')
         elif args.engine_type==1:
             engine = aie_helper.load_mistral7b_CondenseQuestionChatEngine(model, tokenizer, lst_docs, streaming)
             # DOES THIS WORK WITH TRULENS?
 
-    # Set up TruLens if necessary
-    if args.trulens:
-        # Start tru object
-        tru = Tru(database_url="sqlite:///doc_upload.sqlite")
-        tru.reset_database()
+        # Set up TruLens if necessary
+        if args.trulens:
+            print('SETTING UP TRULENS')
+            # Start tru object
+            tru = Tru(database_url="sqlite:///doc_upload.sqlite")
+            tru.reset_database()
 
-        # Initialize config parser
-        config = configparser.ConfigParser()
-        config.read("/mnt/efs/data/AIEresearch/config.ini")
-        # Set the OpenAI authorization token 
-        openai_key = config['openai']['api_key']
-        os.environ['OPENAI_API_KEY'] = openai_key
+            # Initialize config parser
+            config = configparser.ConfigParser()
+            config.read("/mnt/efs/data/AIEresearch/config.ini")
+            # Set the OpenAI authorization token 
+            openai_key = config['openai']['api_key']
+            os.environ['OPENAI_API_KEY'] = openai_key
 
-        # Initialize groundedness
-        openai = OpenAI()
-        grounded = Groundedness(groundedness_provider=openai)
+            # Initialize groundedness
+            openai = OpenAI()
+            grounded = Groundedness(groundedness_provider=openai)
 
-        # Define a groundedness feedback function
-        f_groundedness = Feedback(grounded.groundedness_measure_with_cot_reasons) \
-            .on(TruLlama.select_source_nodes().node.text.collect()) \
-            .on_output() \
-            .aggregate(grounded.grounded_statements_aggregator)
+            # Define a groundedness feedback function
+            f_groundedness = Feedback(grounded.groundedness_measure_with_cot_reasons) \
+                .on(TruLlama.select_source_nodes().node.text.collect()) \
+                .on_output() \
+                .aggregate(grounded.grounded_statements_aggregator)
 
-        # Question/answer relevance between overall question and answer.
-        f_qa_relevance = Feedback(openai.relevance).on_input_output()
+            # Question/answer relevance between overall question and answer.
+            f_qa_relevance = Feedback(openai.relevance).on_input_output()
 
-        # Question/statement relevance between question and each context chunk.
-        f_qs_relevance = Feedback(openai.qs_relevance).on_input().on(
-                            TruLlama.select_source_nodes().node.text).aggregate(np.mean)
+            # Question/statement relevance between question and each context chunk.
+            f_qs_relevance = Feedback(openai.qs_relevance).on_input().on(
+                                TruLlama.select_source_nodes().node.text).aggregate(np.mean)
 
-        # Set up query engine recorder
-        tru_query_engine_recorder = TruLlama(engine,
-                                             app_id='LlamaIndex_App',
-                                             feedbacks=[f_groundedness, f_qa_relevance, f_qs_relevance])     
-        # Start TruLens dashboard
-        tru.run_dashboard(port='8089') 
+            # Set up query engine recorder
+            global tru_query_engine_recorder
+            tru_query_engine_recorder = TruLlama(engine,
+                                                app_id='LlamaIndex_App',
+                                                feedbacks=[f_groundedness, f_qa_relevance, f_qs_relevance])     
+            # Start TruLens dashboard
+            tru.run_dashboard(port='8089') 
+
+        imgs = [None] * 24
+        for img in progress.tqdm(imgs, desc="Loading..."):
+            time.sleep(0.1)
+        return ["Loaded"] * 2
 
     # query function using rag model
     def query_index(message, chat_history):
@@ -204,13 +207,11 @@ if __name__ == "__main__":
             # Set up TruLens context manager
             with tru_query_engine_recorder as recording:
                 # Get non-streaming response
-                # response = engine.query(message) 
-                response = ENGINE.query(message)
+                response = engine.query(message)
         else:
             # Get streaming response based on model type
             if args.engine_type==0:
-                # response = engine.query(message)
-                response = ENGINE.query(message)
+                response = engine.query(message)
             elif args.engine_type==1:
                 # Assume no streaming for now
                 response = engine.chat(message)
@@ -219,11 +220,15 @@ if __name__ == "__main__":
 
         # Stream response to GUI        
         outputs = []
+        resp = ''
         # Set response object based on if trulens is working
-        resp_obj = response.response if args.trulens else response.response_gen
+        resp_obj = response.response #if args.trulens else response.response_gen
         for text in resp_obj:
             outputs.append(text)
-            yield "".join(outputs)
+            resp += text
+            # yield "".join(outputs)
+        # Add to chat history 
+        chat_history.append((message, resp))
         # Add to log
         with open(log_file_path, 'w') as f:
             log_dict[log_idx]['response'] = ''.join([o for o in outputs])
@@ -248,8 +253,11 @@ if __name__ == "__main__":
                 log_dict[log_idx]['source'] = source_lst
                 log_dict[log_idx]['time'] = str(timedelta(seconds=time.time()-start))
                 f.write(json.dumps(log_dict))
+        # print('RAN QUERY~!', resp)
+        return '', chat_history
                  
     # Set up demo
+    # https://www.gradio.app/guides/creating-a-custom-chatbot-with-blocks
     with gr.Blocks(css="style.css") as demo:
         gr.Markdown(description)
         # gr.Markdown(LICENSE)        
@@ -264,60 +272,37 @@ if __name__ == "__main__":
         
         ## Chatbot
         launch_model = gr.Button("Click to Launch Model with Files")
-        launch_model.click(fn=create_engine)
-        chatbot      = gr.Chatbot([], 
-                                  elem_id="chatbot", 
-                                  label='Chatbox')
+        launch_model.click(fn=create_engine) #gr.Progress(), 
+        chatbot = gr.Chatbot([], 
+                             elem_id="chatbot", 
+                             label='Chatbox')
         text_box = gr.Textbox(label= "Question",
                               lines=2,
-                              placeholder="Type a message (then press shift+enter)")
+                              placeholder="Type a message...")
        ## Chatbot buttons
         with gr.Row():
-            with gr.Column(scale=0.25):
+            with gr.Column(scale=0.5):
                 submit_btn = gr.Button('Submit',
                                        variant='primary', 
                                        size='sm')
-            with gr.Column(scale=0.25):
-                clear_question_btn = gr.ClearButton(value='Clear Question',
-                                                    variant='secondary',
-                                                    size='sm')
-            with gr.Column(scale=0.25):
+            # with gr.Column(scale=0.25):
+            #     clear_question_btn = gr.ClearButton(value='Clear Question',
+            #                                         variant='secondary',
+            #                                         size='sm')
+            with gr.Column(scale=0.5):
                 clear_chat_btn = gr.Button('Clear Chat',
                                            variant='stop',
                                            size='sm')
         
         # Set button functionality
-        # txt.submit(add_text, 
-        #           [chatbot, text_box], 
-        #           [chatbot, text_box]).then(bot, 
-        #                                    [chatbot,
-        #                                     instruction,
-        #                                     temperature,
-        #                                     max_new_tokens,
-        #                                     repetition_penalty,
-        #                                     top_k,
-        #                                     top_p,
-        #                                     k_context], 
-        #                                    chatbot)
-        
-        # submit_btn.click(add_text, 
-        #                 [chatbot, text_box], 
-        #                 [chatbot, text_box]).then(bot, 
-        #                                          [chatbot,
-        #                                           instruction,
-        #                                           temperature, 
-        #                                           max_new_tokens,
-        #                                           repetition_penalty,
-        #                                           top_k,
-        #                                           top_p,
-        #                                           k_context], 
-        #                                          chatbot).then(clear_cuda_cache, 
-        #                                                        None, 
-        #                                                        None)
+        submit_btn.click(fn=query_index, 
+                         inputs=[text_box, chatbot], 
+                         outputs=[text_box, chatbot])
 
         # clear_question_btn.click(fn=lambda: None, 
         #                          inputs=None, 
         #                          outputs=text_box)
+        
         clear_chat_btn.click(fn=lambda: None, 
                              inputs=None, 
                              outputs=chatbot, 

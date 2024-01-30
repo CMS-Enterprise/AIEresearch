@@ -71,6 +71,7 @@ def display_human_centered_ai():
                             html.Td("Let users see examples of what they can ask the Chatbot."),
                         ])
                     ], id="info_table"),
+                    html.Br(),
                     html.Img(
                         src=dash.get_asset_url("chatbot_app.png"),
                         style={

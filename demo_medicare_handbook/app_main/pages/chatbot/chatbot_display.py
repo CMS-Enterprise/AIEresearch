@@ -1,6 +1,7 @@
 
 import dash_bootstrap_components as dbc
 from dash import html
+import dash
 
 header = html.Div(
     [
@@ -8,49 +9,97 @@ header = html.Div(
         html.Hr(),
         html.H2('Overview'),
         html.P(
-            "The Medicare Handbook Chatbot sources information from the ""Medicare and You 2024"" handbook and supports users in answering their Medicare questions. The Chatbot aims to be friendly, knowledgeable, and provides examples of questions that the user can ask. By interacting with the Chatbot, users can reduce the time they would spend reading the 128 page Handbook."
+            "A simple UI for ""Question and Answer"" chats with an LLM as that has access to documentation for Medicare Manuals. Upon a query submission, the system will search data stores (graph, vectors) for supporting data, then submit the query, chat history, and context to an LLM to respond."
         )
     ]
 )
 
-datasets_listing = html.Div(
+model_listing = html.Div(
     [
-        html.H4("Datasets"),
-        html.P("A dataset refers to the structured collection of information extracted from a source, including text, tables, and figures, that the chatbot will use to understand and respond to user questions. The following are datasets we used in our tool."),  
         html.Table([
             html.Tr([
-                html.Th("Dataset"),
-                html.Th("Description"),
-                html.Th("Data Use Agreement"),
-                html.Th("Link to Source"),
+                html.Th("Model"),
+                html.Th("HF Model Card"),
+                html.Th("Details"),
             ]),
             html.Tr([
-                html.Td("TBD"),
-                html.Td("TBD"),
-                html.Td("TBD"),
-                html.Td("TBD"),
+                html.Td("Mistral-7B-Instruct-v0.2"),
+                html.Td([
+                    html.A("mistralai/Mistral-7B-Instruct-v0.1", href='https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1', target="_blank")
+                ]),
+                html.Td("Published September 2023."),
+            ]),
+            html.Tr([
+                html.Td("Llama 2"),
+                html.Td([
+                    html.A("meta-llama/Llama-2-7b-chat", href='https://huggingface.co/meta-llama/Llama-2-7b-chat', target="_blank")
+                ]),
+                html.Td("Published July 2023.  Also available with 13 and 70 billion parameters."),
             ])
         ], id="info_table"),
     ]
 )
 
-datastores_listing = html.Div(
+datasets_listing = html.Div(
     [
-        html.H4("Data Stores"),
-        html.P("A data store is the repository or database system where a dataset is securely stored, managed, and accessed by the chatbot to retrieve information needed to answer user questions effectively. The following are data stores we used in our tool."),  
+        html.P("While this use case does not utilize any datasets to inform the model, it does create data in the form of:"),  
         html.Table([
             html.Tr([
-                html.Th("Data Store"),
+                html.Th("Output"),
                 html.Th("Description"),
-                html.Th("Type"),
-                html.Th("Link to Location"),
             ]),
             html.Tr([
-                html.Td("TBD"),
-                html.Td("TBD"),
-                html.Td("TBD"),
-                html.Td("TBD"),
+                html.Td("Logs"),
+                html.Td("A collection of data points used to evaluate the model's quality and implementation performance. This includes query(prompt), response, latency, datetime, and occasionally additional meta data. No data is collected about users. This data collection is automated and required to use the application, you cannot opt out."),
+            ]),
+            html.Tr([
+                html.Td("Provided Contextual Data"),
+                html.Td("This is the documentation the user uploads as a resource for the LLM. This documentation may be retained for human evaluation of model responses for up to 30 days. Thereafter, the data is removed."),
+            ]),  
+            html.Tr([
+                html.Td("'Medicare and You 2024' Handbook"),
+                html.Td("The 'Medicare & You' handbook is mailed to all Medicare households each fall. It includes a summary of Medicare benefits, rights, and protections; lists of available health and drug plans; and answers to frequently asked questions about Medicare."),
+            ]),  
+        ], id="info_table"),
+    ]
+)
+
+eval_trulense = html.Div(
+    [
+        html.Table([
+            html.Tr([
+                html.Th("Term"),
+                html.Th("Definition"),
+            ]),
+            html.Tr([
+                html.Td("Answer Relevance"),
+                html.Td("This metric evaluates how relevant the LLM''s response is to the original user input. It ensures that the final response provided by the application is a helpful answer to the user's question."),
+            ]),
+            html.Tr([
+                html.Td("Context Relevance"),
+                html.Td("Context relevance is crucial in the retrieval step of a RAG (Retrieval-Augmented Generation) application. It measures the relevance of each chunk of context to the input query. High context relevance is important to ensure that the information used by the LLM to form an answer is pertinent to the query at hand, preventing irrelevant information from leading to hallucinations in the generated response."),
+            ]),
+            html.Tr([
+                html.Td("Groundedness"),
+                html.Td("Groundedness refers to the degree to which the LLM's response is factually consistent with the provided or retrieved context. After retrieval, as the context is formed into an answer by an LLM, the model may exaggerate or stray from the facts. Evaluating groundedness involves verifying that the claims made in the response can be supported by evidence within the retrieved context. This helps ascertain that the application''s responses are based on accurate information and are free from fabricated content, up to the limit of the knowledge base's accuracy."),
+            ]),
+            html.Tr([
+                html.Td("Latency (Seconds)"),
+                html.Td("Latency measures the time it takes for the LLM to generate a response, from the moment the query is submitted to when the response is received. This is a performance metric that can influence the user experience, as lower latency is generally preferred for responsiveness."),
+            ]),
+            html.Tr([
+                html.Td("Total Cost (USD)"),
+                html.Td("Total cost refers to the monetary cost associated with generating a response using the LLM. It is likely calculated based on factors like computational resources used, the number of tokens generated, and the model's operational costs. This can help users and developers understand the financial implications of using the LLM at scale."),
+            ]),
+            html.Tr([
+                html.Td("Mean Absolute Error"),
+                html.Td("This is a statistical measure used to evaluate the quality of feedback or models. It represents the average of the absolute differences between the expected scores and the actual scores provided by the LLM across all test cases. A lower mean absolute error indicates higher accuracy and reliability of the model in providing expected outcomes."),
+            ]),
+            html.Tr([
+                html.Td("qs_relevance"),
+                html.Td("Although not directly defined in the documentation, based on the context, qs_relevance seems to be a specific function or method that assesses the relevance of the LLM's response to a query, similar to 'relevance' but potentially tailored to a particular aspect or measured using a specific methodology. It could be part of a feedback loop to evaluate and track feedback quality across different models or prompting schemes."),
             ])
+
         ], id="info_table"),
     ]
 )
@@ -59,26 +108,40 @@ accordion = html.Div(
     dbc.Accordion(
         [
             dbc.AccordionItem(
-                "Our approach involves the integration of __________ (specific NLP framework or tool) for understanding user queries, combined with __________ (ML framework or tool) for generating responses that accurately match the information found in the 'Medicare and You' 2024 handbook. The chatbot is hosted on __________ (cloud service provider), taking advantage of its __________ (specific cloud services) for optimal performance and reliability.", title="Approach"
-            ),
-            dbc.AccordionItem(
-                "A model is a computational framework that processes and interprets human language to generate responses. It is built using machine learning algorithms that analyze vast amounts of text data to understand and mimic human conversational patterns. The following are models we tested in our tool.", title="Model"
+                [
+                    html.P(
+                        "Our approach involves the use of a single LLM to answer any simple query or request from a user. The responses generated are a reflection the models capability to 'reason' and use provided contextual documentation to form a response. Our intention is to test the deployment of a Generative AI Tool using an LLM model within our CMS owned AWS environment. Our intention is to test the usefulness of LLMs with more 'realistic' circumstances to what Medicare beneficiaries would use. We hypothesized that either beneficiaries or their agents would prefer to have the ability to ask natural questions by voice and hear responses in the same method."
+                    ),
+                    html.P(
+                        "We utilize Retrieval Augmentation Generation (RAG) for this demonstration and measure it's quality using both autonomous LLM reviews (from other options than the one we're using) and through human evaluation to measure the quality and performance of the model for our use cases."
+                    ),                    
+                ], title="Approach"
             ),
             dbc.AccordionItem(
                 [
-                    datasets_listing, 
-                    html.Br(),
-                    datastores_listing,
+                    html.P(
+                        "We are using the following models in this example for the prompt and responses. You can find additional information for each below:"
+                    ),
+                    model_listing,
+                    html.P(
+                        "Although not currently, provided, we use a number of 'smaller' models to identify useful context from documentation that is appended to queries send to the llm. Check back soon for additional details."
+                    ) 
+                ], title="Model"
+            ),
+            dbc.AccordionItem(
+                [
+                    datasets_listing
                 ], title="Data"
             ),
             dbc.AccordionItem(
                 [
-                    html.P
-                    (
-                        "An evaluation is the process of assessing the chatbot's performance and effectiveness in understanding and responding to user questions accurately and helpfully. This involves analyzing metrics such as response accuracy, user satisfaction, and the ability of the chatbot to handle various types of inquiries based on the data. The following are evaluation results by model."
-                    ),
+                    # html.P(
+                    #     "We are currently using TruLens and human evaluation on this model. The results of these methods will be provided here autonomously in the future. Below, you''ll find additional details on the evaluation alongside initial scores:"
+                    # ),
+                    html.H4("TruLens Evaluations"),
+                    eval_trulense,
                     html.Iframe(
-                        src="http://127.0.0.1:8080/", 
+                        src="http://127.0.0.1:8666/", 
                         height=800, 
                         width=950, 
                         style={
@@ -90,10 +153,24 @@ accordion = html.Div(
                             "width": "75%"
                         }
                     ),
+                    html.H4("Human Evaluation"),
+                    html.P(
+                        "Measures of accuracy, relevance, and breadth. For now, this information is stored offline and will be included later autonomously."
+                    ),
+                    html.Img(
+                        #src=dash.get_asset_url("../assets/eval_scores.png"),
+                        src="../assets/eval_scores.png",
+                        style={
+                            "display": "block", 
+                            "margin-left": "auto", 
+                            "margin-right": "auto", 
+                            "width": "50%"
+                        }, 
+                    )
                 ], title="Evaluation"
             ),
             dbc.AccordionItem(
-                "The tool is configured in the CMS Knowledge Management Platform (KMP) environment. The environment refers to the specific setup or configuration within which the chatbot operates, encompassing the software, hardware, and network systems that support its functionality. GPU: GPU?", title="Environment"
+                "The tool is configured in the CMS Knowledge Management Platform (KMP) AI Workspace. It is housed on AWS.", title="Environment"
             ),
             dbc.AccordionItem(
                 [
@@ -116,7 +193,7 @@ def display_chatbot():
         header, 
         html.Iframe(
             src="http://127.0.0.1:7863/", 
-            height=400, 
+            height=900, 
             width=950, 
             style={
                 "display": "block", 
