@@ -170,7 +170,7 @@ if __name__ == "__main__":
                                              app_id='LlamaIndex_App',
                                              feedbacks=[f_groundedness, f_qa_relevance, f_qs_relevance])     
         # Start TruLens dashboard
-        tru.run_dashboard(port='9966') 
+        tru.run_dashboard(port='9967') 
 
 
     def transcribe(audio):
@@ -186,15 +186,6 @@ if __name__ == "__main__":
     #async def process_audio(audio):
         global transcribed_text
         transcribed_text = transcribe(audio)
-        # print('transcribed_text', transcribed_text)
-
-        # # Extract the final complete response
-        # final_response = llm_resp_text.split("</s>")[-2] + "</s>"
-        # print('final_response', final_response)
-        # tts_output = text_to_speech(final_response, tokenizer)
-        # print('tts_output', tts_output)
-
-        # chat_interface.render([final_response])
         return transcribed_text   
 
 
@@ -202,10 +193,8 @@ if __name__ == "__main__":
     def query_index(message, chat_history):
         # Start the timer
         start = time.time()
-        
         # Set log_idx
         log_idx = len(chat_history)
-        # async def query_index(message, chat_history): # Approach to get async to work 
         # Add to log
         with open(log_file_path, 'w') as f:
             log_dict[log_idx]['query'] = message
@@ -224,8 +213,7 @@ if __name__ == "__main__":
             elif args.engine_type==1:
                 # Assume no streaming for now
                 response = engine.chat(message)
-                # If streaming
-                # response = engine.stream_chat(message)
+
 
         # Stream response to GUI        
         outputs = []
@@ -264,73 +252,58 @@ if __name__ == "__main__":
                 f.write(json.dumps(log_dict))
         return '', chat_history     
 
-
-    def divide_text(text, max_tokens):
-        tokens = tokenizer.encode(text, add_special_tokens=False)
+    # Function to divide the text so the model will take more than 600 characters
+    def divide_text(text, max_length):
         chunks = []
-        while tokens:
-            # Determine the length of the next chunk
-            chunk_length = 0
-            for i, token in enumerate(tokens):
-                chunk_length += 1
-                if chunk_length > max_tokens:
-                    break
-            
-            # Take the tokens for the next chunk and convert them back to text
-            chunk_tokens = tokens[:i]
-            chunk_text = tokenizer.decode(chunk_tokens)
-            chunks.append(chunk_text)
-
-            # Remove the processed tokens
-            tokens = tokens[i:]
-
+        while text:
+            if len(text) <= max_length:
+                chunks.append(text)
+                break
+            # Find the nearest space to the max_length
+            split_index = text.rfind(' ', 0, max_length)
+            if split_index == -1:  # No space found, forced to split at max_length
+                split_index = max_length
+            chunks.append(text[:split_index])
+            text = text[split_index:].lstrip()  # Remove leading spaces from the next chunk
         return chunks
 
+    # Function to process text input (from LLM) and convert to speech
     def text_to_speech(text):
-        text_chunks = divide_text(text, 600)
+        print(f"Input type: {type(text)}")
+        print(f"Input content: {text}") 
+        text_chunks = divide_text(text, 580)
         audio_data = []
         for chunk in text_chunks:
             inputs = processor_st(text=chunk, return_tensors="pt", normalize=True)
+            # load xvector containing speaker's voice characteristics from a dataset
             embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
             speaker_embeddings = torch.tensor(embeddings_dataset[7306]["xvector"]).unsqueeze(0)
             speech = model_st.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder_st)
             audio_data.append(speech)
-        try:
-            combined_audio = np.concatenate(audio_data)
-        except:
-            pass
+        combined_audio = np.concatenate(audio_data)
 
         # Create a temporary file to store the audio
         with tempfile.NamedTemporaryFile(delete=False, suffix=".wav", mode='w+b') as temp_audio_file:
-            #scipy.io.wavfile.write(temp_audio_file, rate=16000, data=combined_audio.numpy())
             scipy.io.wavfile.write(temp_audio_file, rate=16000, data=combined_audio)
             return temp_audio_file.name
-
-
+ 
     # Set up demo
     with gr.Blocks(css="style.css") as demo:
         gr.Markdown(description)
-        # chat_interface.render()
         chatbot = gr.Chatbot([], 
                             elem_id="chatbot", 
                             label='Chatbox')
-        # text_box = gr.Textbox(label= "Question",
-        #                       lines=2,
-        #                       placeholder="Type a message or use the audio feature below")                        
+                     
         with gr.Row():
             with gr.Column():
                 speech_input  = gr.Audio(label="Your Speech", 
                                          sources=["microphone"], 
                                          type="numpy")
                 transcribe_button = gr.Button("Transcribe audio into text")
-                #reset_button = gr.Button("Reset Chat")
                 transcribed_text_output = gr.Textbox(label="Transcribed Text")
                 query_button = gr.Button("Ask the model!")
-            # with gr.Column():
-            #     query_button = gr.Button("Ask the model!")
-            #     hear_button = gr.Button("Listen to the response!")
-            #     #text_output = gr.Textbox(label="LLM Response")
-            #     speech_output = gr.Audio(label="Response in Speech", type="filepath")
+                hear_button = gr.Button("Listen to the response!")
+                speech_output = gr.Audio(label="Response in Speech", type="filepath")
 
         transcribe_button.click(fn=transcribe_audio,
                                 inputs=[speech_input],
@@ -338,9 +311,9 @@ if __name__ == "__main__":
         query_button.click(fn=query_index, 
                            inputs=[transcribed_text_output, chatbot],
                            outputs=[transcribed_text_output, chatbot])        
-        # hear_button.click(fn=text_to_speech, 
-        #                   inputs=[transcribed_text_output],
-        #                   outputs=[speech_output])
+        hear_button.click(fn=text_to_speech, 
+                           inputs=[chatbot],
+                           outputs=[speech_output])
 
 
     # Start the demo
