@@ -259,7 +259,7 @@ if __name__ == "__main__":
             if len(text) <= max_length:
                 chunks.append(text)
                 break
-            # Find the nearest space to the max_length
+            # Find the nearest space to the max_length so no partial process
             split_index = text.rfind(' ', 0, max_length)
             if split_index == -1:  # No space found, forced to split at max_length
                 split_index = max_length
