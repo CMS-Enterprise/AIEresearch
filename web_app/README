@@ -1,0 +1,155 @@
+# Demo 
+
+Below as instructions for running the demo. 
+
+<br>
+
+## App Components
+
+Open a terminal window and run commands for each app component. 
+
+<br>
+
+### All
+
+* If you are using a virtual environment (such as venv or conda), ensure that is running per instance. 
+* Start off all terminal instances with the code below
+* For the most consistent viewing experience, use light mode (as opposed to dark mode) on your browser. 
+
+<br>
+
+### App
+
+* Dash implementation of the app
+* `~/aie_demo_playground/web_app/app.py`
+* Access from http://127.0.0.1:8888/
+
+> NOTE: It may make sense to use a port other than `8888`
+
+```
+cd ~/aie_demo_playground/web_app/app.py
+python app.py
+```
+
+<br>
+
+### Foundational LLM Q&A
+
+* Out-of-the-box Mistarl7B
+* Model: `~/aie_demo_playground/models/app_mistral.py`
+* Page: `~/aie_demo_playground/web_app/pages/qa/qa_display.py`
+* _Should_ use port `7860`
+* Use whatever name you want for the log file after the `-l` flag
+
+```
+python app_mistral.py -l LogFileName
+```
+
+<br>
+
+### Doc Upload & Query Tool
+
+* Out-of-the-box Mistarl7B with RAG applied to whichever documents are uploaded & TruLens
+* Model: `~/aie_demo_playground/models/app_mistral_rag_doc_tool.py`
+* Page: `~/aie_demo_playground/web_app/pages/doc_upload/doc_upload_display.py`
+* _Should_ use port `7861` for the demo and `8089` for TruLens
+* Use whatever name you want for the log file after the `-l` flag
+
+> NOTE: TruLens can only start _after_ the engine has been initiated. So it will not show up on the page's Evaluation section until after the button "Click to Upload File(s)"
+
+> NOTE: The "Submit" button only works _after_ the engine has been initiated. This may take a minute if a lot of large files are uploaded. Currently, there is no indication on the page that the engine has loaded. For now, just check the terminal window. 
+
+```
+python app_mistral_rag_doc_tool.py -l LogFileName -t 
+```
+
+<br>
+
+### TTS
+
+* Mistral7B with RAG using the 2024 Medicare Handbook PDF & TruLens
+* Model: `~/aie_demo_playground/models/app_mistral_rag_v-t.py`
+* Page: `~/aie_demo_playground/web_app/pages/tts/tts_display.py`
+* _Should_ use port `7862` for the demo and `9966` for TruLens
+* Use whatever name you want for the log file after the `-l` flag
+
+```
+python app_mistral_rag_v-t.py -l LogFileName -t
+```
+
+<br>
+
+### Medicare Handbook Chatbot
+
+* Mistral7B with RAG using the 2024 Medicare Handbook PDF & TruLens
+* Model: `~/aie_demo_playground/models/app_mistral_rag.py`
+* Page: `~/aie_demo_playground/web_app/pages/chatbot/chatbot_display.py`
+* _Should_ use port `7863` for the demo and `8666` for TruLens
+* Use whatever name you want for the log file after the `-l` flag
+
+```
+python app_mistral_rag.py -l LogFileName -t
+```
+
+<br>
+
+---
+
+## Troubleshooting
+
+> I cannot see a component on the site / the site is not working! 
+
+* Try hard resetting: `Ctrl` + `Shift` + `R` (on Chrome browser)
+* Try opening in a new tab. 
+* Try incongnito mode. 
+
+<br>
+
+> A component is not working!
+
+Try restarting it on the terminal window. 
+
+<br>
+
+> Ports are not showing up!
+
+Check if VSCode has changed port fowarding. See the PORTS tab next to the TERMINAL tab. Change the ports in their respective pages and re-run the app.
+
+<br>
+
+> My port is taken by something!
+
+See [How to check if port is in use on Linux or Unix](https://www.cyberciti.biz/faq/unix-linux-check-if-port-is-in-use-command/). 
+
+```
+sudo lsof -i -P -n | grep PORT_NUMBER
+```
+
+This prints out (run `sudo lsof -i -P -n | head -1` to see this):
+```
+COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+```
+
+Then kill the PID
+
+```
+kill -9 PID
+```
+
+See if the process is still running, and check the GPU usage to see if it is still there. 
+
+```
+nvidia-smi
+```
+
+You will see processes in the bottom seciton. 
+
+```
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+```
