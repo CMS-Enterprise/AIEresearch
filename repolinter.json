@@ -1,5 +1,5 @@
 {
-  "extends": "https://raw.githubusercontent.com/DSACMS/repo-scaffolder/main/tier2/%7B%7Bcookiecutter.project_slug%7D%7D/repolinter.json",
+  "extends": "https://raw.githubusercontent.com/DSACMS/repo-scaffolder/main/tier1/%7B%7Bcookiecutter.project_slug%7D%7D/repolinter.json",
   "$schema": "https://raw.githubusercontent.com/todogroup/repolinter/master/rulesets/schema.json",
     "version": 2,
     "axioms": {
@@ -9,76 +9,96 @@
     },
     "rules": {
       "maintainers-file-exists": {
-        "level": "error"
-      },
-      "governance-file-exists": {
         "level": "warning"
       },
       "codeowners-file-exists": {
+        "level": "warning"
+      },
+      "community-guidelines-file-exists": {
+        "level": "error"
+      },
+      "code-of-conduct-file-exists": {
         "level": "error"
       },
       "readme-contains-project-vision": {
-        "level": "warning"
+        "level": "error"
       },
       "readme-contains-project-mission": {
-        "level": "warning"
+        "level": "error"
       },
       "readme-contains-agency-mission": {
-        "level": "warning"
+        "level": "error"
       },
       "readme-contains-team-mission": {
+        "level": "error"
+      },
+      "readme-contains-local-development": {
+        "level": "error"
+      },
+      "readme-contains-coding-style-and-linters": {
+        "level": "error"
+      },
+      "readme-contains-contributing": {
+        "level": "error"
+      },
+      "readme-contains-codeowners": {
+        "level": "error"
+      },
+      "readme-contains-community": {
+        "level": "error"
+      },
+      "readme-contains-community-guidelines": {
+        "level": "error"
+      },
+      "readme-contains-governance": {
         "level": "warning"
       },
-      "readme-contains-documentation-index": {
+      "contributing-contains-how-to-contribute": {
         "level": "error"
       },
-      "readme-contains-repository-structure": {
-        "level": "error"
-      },
-      "readme-contains-development-and-software-delivery-lifecycle": {
-        "level": "error"
-      },
-      "readme-contains-branching-model": {
-        "level": "error"
-      },
-      "readme-contains-feedback": {
-        "level": "error"
-      },
-
       "contributing-contains-team-specific-guidelines": {
+        "level": "warning"
+      },
+      "contributing-contains-workflow-and-branching": {
         "level": "error"
       },
-      "contributing-contains-testing-conventions": {
+      "contributing-contains-coding-style-and-linters": {
         "level": "error"
       },
       "contributing-contains-writing-pull-requests": {
-        "level": "error"
+        "level": "warning"
       },
       "contributing-contains-reviewing-pull-requests": {
-        "level": "error"
+        "level": "warning"
       },
-      "contributing-contains-documentation": {
-        "level": "error"
+      "contributing-contains-shipping-releases": {
+        "level": "warning"
       },
       "maintainers-contains-maintainers": {
-        "level": "error"
+        "level": "warning"
       },
       "maintainers-contains-maintainers-list": {
-        "level": "error"
-      },
-      "maintainers-contains-approvers-list": {
-        "level": "error"
-      },
-      "maintainers-contains-reviewers-list": {
-        "level": "error"
-      },
-      "governance-contains-governance": {
         "level": "warning"
       },
       "code-owners-contains-list-of-users": {
-        "level": "error"
+        "level": "warning"
       },
       "code-owners-contains-repo-domains": {
+        "level": "warning"
+      },
+      "community-guidelines-contains-principles": {
+        "level": "error"
+      },
+      "community-guidelines-contains-community-guidelines": {
+        "level": "error"
+      },
+      "community-guidelines-contains-acknowledgements": {
+        "level": "error"
+      },
+      "code-of-conduct-contains-contributor-code-of-conduct": {
+        "level": "error"
+      },
+      "code-of-conduct-contains-acknowledgements": {
         "level": "error"
       }
     }
