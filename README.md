@@ -15,10 +15,8 @@ The UI was made with Gradio and Plotly Dash, and evaluation metrics on the respo
 ### Agency Mission
 The Centers for Medicare and Medicaid Services (CMS) has a mission to provide quality health care coverage and promote effective care for Medicare beneficiaries. 
 
-
-<!-- 
 ### Team Mission
-TODO: Good to include since this is an agency-led project -->
+<!-- TODO: Must include since this is an agency-led project -->
 
 ## Core Team
 
@@ -43,10 +41,10 @@ The project is organized into a folders to encapsulate different functionalities
         ├── qa
         └── tts
 
-
+<!-- 
 # Development and Software Delivery Lifecycle 
-
-The following guide is for members of the project team who have access to the repository as well as code contributors. The main difference between internal and external contributions is that external contributors will need to fork the project and will not be able to merge their own pull requests. For more information on contribributing, see: [CONTRIBUTING.md](./CONTRIBUTING.md).
+The following guide is for members of the project team who have access to the repository as well as code contributors. The main difference between internal and external contributions is that externabl contributors will need to fork the project and will not be able to merge their own pull requests. For more information on contribributing, see: [CONTRIBUTING.md](./CONTRIBUTING.md).
+-->
 
 ## Local Development
 
@@ -60,9 +58,10 @@ This project is monorepo with several apps. Please see the [api](./api/README.md
 
 Each application has its own linting and testing guidelines. Lint and code tests are run on each commit, so linters and tests should be run locally before commiting.
 
+<!--
 ## Branching Model
 
-<!--- TODO - with example below:
+TODO - with example below:
 This project follows [trunk-based development](https://trunkbaseddevelopment.com/), which means:
 
 * Make small changes in [short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/) and merge to `main` frequently.
@@ -98,14 +97,12 @@ Principles and guidelines for participating in our open source community are can
 
 <!--
 ## Governance
-Information about how the AIE_demo_playground community is governed may be found in [GOVERNANCE.md](GOVERNANCE.md).
--->
-
-## Feedback
-
-If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know at **{contact email}**. If you would like to comment on the tool itself, please let us know by filing an **issue on our GitHub repository.**
+Information about how the **{project_name}** community is governed may be found in [GOVERNANCE.md](GOVERNANCE.md).
 
 <!--
+## Feedback
+If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know at **{contact email}**. If you would like to comment on the tool itself, please let us know by filing an **issue on our GitHub repository.**
+
 ## Glossary
 Information about terminology and acronyms used in this documentation may be found in [GLOSSARY.md](GLOSSARY.md).
 -->
