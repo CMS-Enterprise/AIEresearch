@@ -18,11 +18,11 @@ We encourage you to read this project's CONTRIBUTING policy (you are here), its
 
 <!--- TODO: If you have 'good-first-issue' or 'easy' labels for newcomers, mention them here.-->
 
-<!-- 
+ 
 ### Team Specific Guidelines
 
-TODO: This section helps contributors understand any team structure in the project (formal or informal.) Encouraged to point towards the MAINTAINERS.md file for further details. 
--->
+Please refer to the 'MAINTAINERS.md' file for details on team members responsible code development and maintenance. 
+
 
 ### Building dependencies
 
@@ -34,7 +34,7 @@ TODO: This section helps contributors understand any team structure in the proje
 
 ### Workflow and Branching
 
-<!--- TODO: Workflow Example
+
 We follow the [GitHub Flow Workflow](https://guides.github.com/introduction/flow/)
 
 1.  Fork the project 
@@ -45,7 +45,7 @@ We follow the [GitHub Flow Workflow](https://guides.github.com/introduction/flow
 6.  Work with repo maintainers to get your change reviewed 
 7.  Wait for your change to be pulled into `oit_aie/aie_demo_playground/main`
 8.  Delete your feature branch
--->
+
 
 <!-- 
 ### Testing Conventions
@@ -55,18 +55,11 @@ TODO: Discuss where tests can be found, how they are run, and what kind of tests
 
 ### Coding Style and Linters
 
-<!--- TODO: HIGHLY ENCOURAGED. Specific tools will vary between different languages/frameworks (e.g. Black for python, esliint for JavaScript, etc...)
+This project adheres to PEP8 rules and guidelines whenever possible when accepting new contributions of Python code. Although, there are good reasons to ignore particular guidelines in particular situations. Further information on PEP8 can be found at https://peps.python.org/pep-0008/.
 
-1. Mention any style guides you adhere to (e.g. pep8, etc...)
-2. Mention any linters your project uses (e.g. flake8, jslint, etc...) 
-3. Mention any naming conventions your project uses (e.g. Semantic Versioning, CamelCasing, etc...)
-4. Mention any other content guidelines the project adheres to (e.g. plainlanguage.gov, etc...)
--->
+This project also uses pylint as the main linter for the moment and employs pylint checks upon new pull requests into protected branches. Python code quality checks are extremely useful for lowering the cost of maintenence of Python projects. Further information on Pylint can be found at https://pylint.readthedocs.io/en/latest/.
 
 ### Writing Issues
-
-<!---
-TODO: Example Issue Guides
 
 When creating an issue please try to adhere to the following format:
 
@@ -84,8 +77,6 @@ When creating an issue please try to adhere to the following format:
 
     List all relevant steps to reproduce the observed behavior.
 
-    see our .github/ISSUE_TEMPLATE.md for more examples.
--->
 
 <!--- 
 ### Writing Pull Requests

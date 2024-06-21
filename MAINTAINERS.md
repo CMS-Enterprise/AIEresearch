@@ -7,4 +7,8 @@ This is a list of maintainers for this project. See [CODEOWNERS.md](./CODEOWNERS
 
 |Role |Name |Github Username |Affiliation|
 |:-----|:-----|:-----|:-----|
-| {role} | {names} | {github usernames} | {affiliations}|
+| Project Manager | Cody Rutherford | cody-rutherford | Noblis |
+| Project Leader | Michael Whittington | michael-whittington24 | Noblis |
+| Developer | Sergio Rego | NoblisSergio | Noblis |
+| Developer | William Rubin | warubin-cms | Noblis |
+| Developer | Ahmad Said | AhmadNoblis | Noblis | 
