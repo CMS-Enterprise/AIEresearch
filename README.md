@@ -16,7 +16,7 @@ The UI was made with Gradio and Plotly Dash, and evaluation metrics on the respo
 The Centers for Medicare and Medicaid Services (CMS) has a mission to provide quality health care coverage and promote effective care for Medicare beneficiaries. 
 
 ### Team Mission
-<!-- TODO: Must include since this is an agency-led project -->
+AI Explorers aims to:​ Up-skill and Inform CMS Personnel on AI Capabilities​, Create Opportunities for CMS Components to Explore AI​, Create Shared Repositories and Best Practices​, and Deliver Proof-Of-Concept Implementations to Validate Business Use Case.
 
 ## Core Team
 
@@ -48,15 +48,24 @@ The following guide is for members of the project team who have access to the re
 
 ## Local Development
 
-<!--- TODO - with example below:
-This project is monorepo with several apps. Please see the [api](./api/README.md) and [frontend](./frontend/README.md) READMEs for information on spinning up those projects locally. Also see the project [documentation](./documentation) for more info.
--->
+Please see `aie_demo_playground/requirements.txt` for library requirements and `aie_demo_playground/web_app/README` for detailed instructions for running the application.  This was run on the following operation system:
+
+```bash 
+NAME="Amazon Linux"
+VERSION="2"
+ID="amzn"
+ID_LIKE="centos rhel fedora"
+VERSION_ID="2"
+PRETTY_NAME="Amazon Linux 2"
+ANSI_COLOR="0;33"
+CPE_NAME="cpe:2.3:o:amazon:amazon_linux:2"
+HOME_URL="https://amazonlinux.com/"
+SUPPORT_END="2025-06-30"
+```
 
 ## Coding Style and Linters
 
-<!-- TODO - Add the repo's linting and code style guidelines -->
-
-Each application has its own linting and testing guidelines. Lint and code tests are run on each commit, so linters and tests should be run locally before commiting.
+Each application has its own linting and testing guidelines. Lint and code tests are run on each commit, so linters and tests should be run locally before committing.  We have followed 'https://google.github.io/styleguide/pyguide.html' in spirit but have not used a linter to assure adherence. 
 
 <!--
 ## Branching Model
