@@ -21,7 +21,7 @@ We encourage you to read this project's CONTRIBUTING policy (you are here), its
  
 ### Team Specific Guidelines
 
-Please refer to the 'MAINTAINERS.md' file for details on team members responsible code development and maintenance. 
+Please refer to the [MAINTAINERS.md](MAINTAINERS.md) file for details on team members responsible code development and maintenance. 
 
 
 ### Building dependencies
