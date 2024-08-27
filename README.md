@@ -20,7 +20,8 @@ AI Explorers aims to:​ Up-skill and Inform CMS Personnel on AI Capabilities​
 
 ## Core Team
 
-An up-to-date list of core team members can be found in [MAINTAINERS.md](MAINTAINERS.md). At this time, the project is still building the core team and defining roles and responsibilities. We are eagerly seeking individuals who would like to join the community and help us define and fill these roles.
+A full list of contributors can be found on [https://github.com/CMS-Enterprise/AIEresearch/graphs/contributors](https://github.com/CMS-Enterprise/AIEresearch/graphs/contributors).
+
 
 ## Documentation Index 
 See the README file in the `web_app` directory to see how to run the models. 
@@ -120,19 +121,22 @@ Information about terminology and acronyms used in this documentation may be fou
 
 ### Open Source Policy
 
-We adhere to the [CMS Open Source
-Policy](https://github.com/CMSGov/cms-open-source-policy). If you have any
-questions, just [shoot us an email](mailto:opensource@cms.hhs.gov).
+We adhere to the [CMS Open Source Policy](https://github.com/CMSGov/cms-open-source-policy). If you have any questions, just [shoot us an email](mailto:opensource@cms.hhs.gov).
 
 ### Security and Responsible Disclosure Policy
 
-*Submit a vulnerability:* Unfortunately, we cannot accept secure submissions via
-email or via GitHub Issues. Please use our website to submit vulnerabilities at
-[https://hhs.responsibledisclosure.com](https://hhs.responsibledisclosure.com).
-HHS maintains an acknowledgements page to recognize your efforts on behalf of
-the American public, but you are also welcome to submit anonymously.
+*Submit a vulnerability:* Vulnerability reports can be submitted through [Bugcrowd](https://bugcrowd.com/cms-vdp). Reports may be submitted anonymously. If you share contact information, we will acknowledge receipt of your report within 3 business days.
 
 For more information about our Security, Vulnerability, and Responsible Disclosure Policies, see [SECURITY.md](SECURITY.md).
+
+### Software Bill of Materials (SBOM)
+
+A Software Bill of Materials (SBOM) is a formal record containing the details and supply chain relationships of various components used in building software. 
+
+In the spirit of [Executive Order 14028 - Improving the Nation’s Cyber Security](https://www.gsa.gov/technology/it-contract-vehicles-and-purchasing-programs/information-technology-category/it-security/executive-order-14028), a SBOM for this repository is provided here: https://github.com/CMS-Enterprise/AIEresearch/network/dependencies.
+
+For more information and resources about SBOMs, visit: https://www.cisa.gov/sbom.
+
 
 ## Public domain
 
