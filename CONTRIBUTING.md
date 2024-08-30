@@ -49,10 +49,6 @@ sudo ./configure  --enable-optimizations
 sudo make altinstall
 python3.11 -V
 sudo rm -f /opt/Python-3.11.7 .tgz
- 
-cd /mnt/efs/data/AIEresearch
-source .venv_dev311/bin/activate
-python -m ipykernel install --user --name .venv_dev311
 ```
 
 ### Workflow and Branching
