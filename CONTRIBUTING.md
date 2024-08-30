@@ -28,7 +28,7 @@ SOFTWARE: Python, Hugging Face Transformers and Gradio, Plotly Dash,
 
 ### Building the Project
 
-The following script with install all required dependencies needed for the project: 
+The following script will install all required dependencies needed for the project: 
 
 ```bash
 #!/bin/bash
