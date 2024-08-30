@@ -22,12 +22,38 @@ We encourage you to read this project's CONTRIBUTING policy (you are here), its
 
 The project depends upon the following technologies:
 
-HARDWARE: NVIDIA GPU, OS: AWS Linux, SOFTWARE: Python, Hugging Face Transformers and Gradio, Plotly Dash
+HARDWARE: NVIDIA GPU - Tesla T4, CUDA Version 12.4, Driver Version: 550.54.17
+OS: Amazon Linux 2
+SOFTWARE: Python, Hugging Face Transformers and Gradio, Plotly Dash, 
 
 ### Building the Project
 
 The following script with install all required dependencies needed for the project: 
 
+```bash
+#!/bin/bash
+ 
+cd /usr/bin/
+sudo yum install gcc openssl-devel bzip2-devel libffi-devel zlib-devel -y
+sudo yum remove  openssl openssl-devel.x86_64 -y
+sudo yum remove  openssl11-1.1.1g openssl11-libs-1.1.1g openssl11-devel-1.1.1g -y
+sudo yum install openssl11-1.1.1g openssl11-libs-1.1.1g openssl11-devel-1.1.1g -y
+sudo yum install git-lfs -y
+sudo yum install libffi-devel -y
+sudo yum install bzip2-devel -y
+sudo yum install xz-devel -y
+sudo wget https://www.python.org/ftp/python/3.11.7/Python-3.11.7.tgz
+sudo tar xzf Python-3.11.7.tgz
+cd Python-3.11.7
+sudo ./configure  --enable-optimizations
+sudo make altinstall
+python3.11 -V
+sudo rm -f /opt/Python-3.11.7 .tgz
+ 
+cd /mnt/efs/data/AIEresearch
+source .venv_dev311/bin/activate
+python -m ipykernel install --user --name .venv_dev311
+```
 
 ### Workflow and Branching
 
