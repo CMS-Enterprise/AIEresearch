@@ -20,11 +20,16 @@ We encourage you to read this project's CONTRIBUTING policy (you are here), its
 
 ### Building dependencies
 
-<!--- TODO: This step is often skipped, so don't forget to include the steps needed to install on your platform. If you project can be multi-platform, this is an excellent place for first time contributors to send patches!-->
+The project depends upon the following technologies:
+
+HARDWARE: NVIDIA GPU
+OS: AWS Linux
+SOFTWARE: Python, Hugging Face Transformers and Gradio, Plotly Dash
 
 ### Building the Project
 
-<!--- TODO: Be sure to include build scripts and instructions, not just the source code itself! -->
+The following script with install all required dependencies needed for the project: 
+
 
 ### Workflow and Branching
 
