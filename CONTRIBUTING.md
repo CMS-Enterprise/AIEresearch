@@ -22,12 +22,7 @@ We encourage you to read this project's CONTRIBUTING policy (you are here), its
 
 The project depends upon the following technologies:
 
-#### HARDWARE 
-NVIDIA GPU
-#### OS: 
-AWS Linux
-#### SOFTWARE: 
-Python, Hugging Face Transformers and Gradio, Plotly Dash
+HARDWARE: NVIDIA GPU, OS: AWS Linux, SOFTWARE: Python, Hugging Face Transformers and Gradio, Plotly Dash
 
 ### Building the Project
 
