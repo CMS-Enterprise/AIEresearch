@@ -172,7 +172,7 @@ accordion = html.Div(
                 [
                     html.P(
                         [
-                            "Please submit pull requests, ask to collaborate, or star our code on our  ", 
+                            "This is a one-time release, fast prototype project and not open to active collaboration at this time.  While we appreciate comments, we may not be able to respond to suggestions via our ", 
                             html.A("GitHub Repository", href='https://github.com/cms-enterprise/AIEresearch', target="_blank")
                         ]
                     )
