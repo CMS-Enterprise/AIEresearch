@@ -5,10 +5,10 @@ datasets==2.16.1
 diffusers==0.27.2
 evaluate==0.4.2
 filelock==3.14.0
-gradio==4.37.1
+gradio==5.11.0
 h5py==3.11.0
 huggingface_hub==0.19.4
-langchain==0.1.17
+langchain==0.2.5
 llama_index==0.10.33
 neuronx_distributed==0.1
 nltk==3.9
